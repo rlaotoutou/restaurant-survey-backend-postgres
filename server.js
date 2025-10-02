@@ -40,6 +40,8 @@ const pool = new Pool({
 
 async function initDb() {
   try {
+    await pool.query('DROP TABLE IF EXISTS surveys'); 
+    
     const create = `CREATE TABLE IF NOT EXISTS surveys (
       id SERIAL PRIMARY KEY,
       timestamp TIMESTAMPTZ DEFAULT NOW(),
